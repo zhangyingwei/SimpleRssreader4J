@@ -1,10 +1,8 @@
 package com.zhangyingwei.hanlder;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-import com.zhangyingwei.handler.RssHandler;
-import com.zhangyingwei.model.RssModel;
+import com.zhangyingwei.rssreader4j.handler.RssHandler;
+import com.zhangyingwei.rssreader4j.model.RssModel;
 
 public class RssHandlerTest {
 	public static void main(String[] args) {

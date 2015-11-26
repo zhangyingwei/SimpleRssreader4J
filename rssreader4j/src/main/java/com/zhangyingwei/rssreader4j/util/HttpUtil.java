@@ -1,4 +1,4 @@
-package com.zhangyingwei.util;
+package com.zhangyingwei.rssreader4j.util;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,13 +16,13 @@ import java.util.Map;
 public class HttpUtil {
 
     /**
-     * 向指定URL发送GET方法的请求
+     * 鍚戞寚瀹歎RL鍙戦�GET鏂规硶鐨勮姹�
      * 
      * @param url
-     *            发送请求的URL
+     *            鍙戦�璇锋眰鐨刄RL
      * @param param
-     *            请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
-     * @return URL 所代表远程资源的响应结果
+     *            璇锋眰鍙傛暟锛岃姹傚弬鏁板簲璇ユ槸 name1=value1&name2=value2 鐨勫舰寮忋�
+     * @return URL 鎵�唬琛ㄨ繙绋嬭祫婧愮殑鍝嶅簲缁撴灉
      */
     public static String sendGet(String url, String param) {
         String result = "";
@@ -30,22 +30,22 @@ public class HttpUtil {
         try {
             String urlNameString = url + "?" + param;
             URL realUrl = new URL(urlNameString);
-            // 打开和URL之间的连接
+            // 鎵撳紑鍜孶RL涔嬮棿鐨勮繛鎺�
             URLConnection connection = realUrl.openConnection();
-            // 设置通用的请求属性
+            // 璁剧疆閫氱敤鐨勮姹傚睘鎬�
             connection.setRequestProperty("accept", "*/*");
             connection.setRequestProperty("connection", "Keep-Alive");
             connection.setRequestProperty("user-agent",
                     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
-            // 建立实际的连接
+            // 寤虹珛瀹為檯鐨勮繛鎺�
             connection.connect();
-            // 获取所有响应头字段
+            // 鑾峰彇鎵�湁鍝嶅簲澶村瓧娈�
             Map<String, List<String>> map = connection.getHeaderFields();
-            // 遍历所有的响应头字段
+            // 閬嶅巻鎵�湁鐨勫搷搴斿ご瀛楁
             for (String key : map.keySet()) {
                 System.out.println(key + "--->" + map.get(key));
             }
-            // 定义 BufferedReader输入流来读取URL的响应
+            // 瀹氫箟 BufferedReader杈撳叆娴佹潵璇诲彇URL鐨勫搷搴�
             in = new BufferedReader(new InputStreamReader(
                     connection.getInputStream()));
             String line;
@@ -53,10 +53,10 @@ public class HttpUtil {
                 result += line;
             }
         } catch (Exception e) {
-            System.out.println("发送GET请求出现异常！" + e);
+            System.out.println("鍙戦�GET璇锋眰鍑虹幇寮傚父锛�" + e);
             e.printStackTrace();
         }
-        // 使用finally块来关闭输入流
+        // 浣跨敤finally鍧楁潵鍏抽棴杈撳叆娴�
         finally {
             try {
                 if (in != null) {
@@ -70,13 +70,13 @@ public class HttpUtil {
     }
 
     /**
-     * 向指定 URL 发送POST方法的请求
+     * 鍚戞寚瀹�URL 鍙戦�POST鏂规硶鐨勮姹�
      * 
      * @param url
-     *            发送请求的 URL
+     *            鍙戦�璇锋眰鐨�URL
      * @param param
-     *            请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
-     * @return 所代表远程资源的响应结果
+     *            璇锋眰鍙傛暟锛岃姹傚弬鏁板簲璇ユ槸 name1=value1&name2=value2 鐨勫舰寮忋�
+     * @return 鎵�唬琛ㄨ繙绋嬭祫婧愮殑鍝嶅簲缁撴灉
      */
     public static String sendPost(String url, String param) {
         PrintWriter out = null;
@@ -84,23 +84,23 @@ public class HttpUtil {
         String result = "";
         try {
             URL realUrl = new URL(url);
-            // 打开和URL之间的连接
+            // 鎵撳紑鍜孶RL涔嬮棿鐨勮繛鎺�
             URLConnection conn = realUrl.openConnection();
-            // 设置通用的请求属性
+            // 璁剧疆閫氱敤鐨勮姹傚睘鎬�
             conn.setRequestProperty("accept", "*/*");
             conn.setRequestProperty("connection", "Keep-Alive");
             conn.setRequestProperty("user-agent",
                     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
-            // 发送POST请求必须设置如下两行
+            // 鍙戦�POST璇锋眰蹇呴』璁剧疆濡備笅涓よ
             conn.setDoOutput(true);
             conn.setDoInput(true);
-            // 获取URLConnection对象对应的输出流
+            // 鑾峰彇URLConnection瀵硅薄瀵瑰簲鐨勮緭鍑烘祦
             out = new PrintWriter(conn.getOutputStream());
-            // 发送请求参数
+            // 鍙戦�璇锋眰鍙傛暟
             out.print(param);
-            // flush输出流的缓冲
+            // flush杈撳嚭娴佺殑缂撳啿
             out.flush();
-            // 定义BufferedReader输入流来读取URL的响应
+            // 瀹氫箟BufferedReader杈撳叆娴佹潵璇诲彇URL鐨勫搷搴�
             in = new BufferedReader(
                     new InputStreamReader(conn.getInputStream()));
             String line;
@@ -108,10 +108,10 @@ public class HttpUtil {
                 result += line;
             }
         } catch (Exception e) {
-            System.out.println("发送 POST 请求出现异常！"+e);
+            System.out.println("鍙戦� POST 璇锋眰鍑虹幇寮傚父锛�"+e);
             e.printStackTrace();
         }
-        //使用finally块来关闭输出流、输入流
+        //浣跨敤finally鍧楁潵鍏抽棴杈撳嚭娴併�杈撳叆娴�
         finally{
             try{
                 if(out!=null){

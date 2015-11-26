@@ -1,20 +1,9 @@
 package com.zhangyingwei.hanlder;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.net.HttpCookie;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
-
 import org.dom4j.Document;
 import org.dom4j.io.SAXReader;
-
-import com.zhangyingwei.handler.SSLHandler;
-import com.zhangyingwei.util.HttpUtil;
+import com.zhangyingwei.rssreader4j.handler.SSLHandler;
+import com.zhangyingwei.rssreader4j.util.HttpUtil;
 
 public class SAXReaderTest {
 	public static void main(String[] args) throws Exception {

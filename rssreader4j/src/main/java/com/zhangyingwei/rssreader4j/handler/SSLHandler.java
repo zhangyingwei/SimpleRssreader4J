@@ -1,4 +1,4 @@
-package com.zhangyingwei.handler;
+package com.zhangyingwei.rssreader4j.handler;
 
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;

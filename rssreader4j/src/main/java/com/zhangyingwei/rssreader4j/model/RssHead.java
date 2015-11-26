@@ -1,4 +1,4 @@
-package com.zhangyingwei.model;
+package com.zhangyingwei.rssreader4j.model;
 
 import org.dom4j.Document;
 

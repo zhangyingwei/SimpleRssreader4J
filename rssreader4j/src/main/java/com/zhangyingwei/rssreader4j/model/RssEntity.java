@@ -1,4 +1,4 @@
-package com.zhangyingwei.model;
+package com.zhangyingwei.rssreader4j.model;
 
 public class RssEntity {
 	private String title;

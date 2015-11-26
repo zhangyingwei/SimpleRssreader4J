@@ -5,10 +5,9 @@ import java.util.List;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.junit.Test;
-
-import com.zhangyingwei.handler.XmlHandler;
-import com.zhangyingwei.model.RssEntity;
-import com.zhangyingwei.model.RssHead;
+import com.zhangyingwei.rssreader4j.handler.XmlHandler;
+import com.zhangyingwei.rssreader4j.model.RssEntity;
+import com.zhangyingwei.rssreader4j.model.RssHead;
 
 public class TestHandler {
 	

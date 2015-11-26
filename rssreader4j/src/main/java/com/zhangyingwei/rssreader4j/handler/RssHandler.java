@@ -1,13 +1,11 @@
-package com.zhangyingwei.handler;
+package com.zhangyingwei.rssreader4j.handler;
 
 import java.util.List;
-
 import org.dom4j.Document;
-
-import com.zhangyingwei.exception.AppException;
-import com.zhangyingwei.model.RssEntity;
-import com.zhangyingwei.model.RssHead;
-import com.zhangyingwei.model.RssModel;
+import com.zhangyingwei.rssreader4j.exception.RssAppException;
+import com.zhangyingwei.rssreader4j.model.RssEntity;
+import com.zhangyingwei.rssreader4j.model.RssHead;
+import com.zhangyingwei.rssreader4j.model.RssModel;
 
 public class RssHandler {
 	
@@ -31,7 +29,7 @@ public class RssHandler {
 			Document document = XmlHandler.readDocument(url);
 			rssHead = XmlHandler.readRssHead(document.getRootElement());
 		} catch (Exception e) {
-			throw new AppException("@:build rsshead err", e);
+			throw new RssAppException("@:build rsshead err", e);
 		}
 		return rssHead;
 	}
@@ -47,7 +45,7 @@ public class RssHandler {
 			Document document = XmlHandler.readDocument(url);
 			rssEntitys = XmlHandler.readRssEneity(document.getRootElement());
 		} catch (Exception e) {
-			throw new AppException("@:build rssentity err", e);
+			throw new RssAppException("@:build rssentity err", e);
 		}
 		return rssEntitys;
 	}

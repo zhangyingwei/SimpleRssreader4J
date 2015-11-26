@@ -1,4 +1,4 @@
-package com.zhangyingwei.handler;
+package com.zhangyingwei.rssreader4j.handler;
 
 
 import java.net.MalformedURLException;
@@ -13,10 +13,10 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import com.zhangyingwei.exception.AppException;
-import com.zhangyingwei.model.RssEntity;
-import com.zhangyingwei.model.RssHead;
-import com.zhangyingwei.model.RssModel;
+import com.zhangyingwei.rssreader4j.exception.RssAppException;
+import com.zhangyingwei.rssreader4j.model.RssEntity;
+import com.zhangyingwei.rssreader4j.model.RssHead;
+import com.zhangyingwei.rssreader4j.model.RssModel;
 
 public class XmlHandler {
 	
@@ -28,15 +28,15 @@ public class XmlHandler {
 	 */
 	public static Document readDocument(String url) throws Exception{
 		Document document = null;
-		if(url==null||url.equals("")||url.length()==0) throw new AppException("@:url is empty");
+		if(url==null||url.equals("")||url.length()==0) throw new RssAppException("@:url is empty");
 		try {
 			URL path = new URL(url);
 			SAXReader reader = new SAXReader();
 			document = reader.read(path);
 		} catch (MalformedURLException e) {
-			throw new AppException("@:url err", e);
+			throw new RssAppException("@:url err", e);
 		} catch (DocumentException e) {
-			throw new AppException("@:xml read err", e);
+			throw new RssAppException("@:xml read err", e);
 		}
 		return document;
 	}
